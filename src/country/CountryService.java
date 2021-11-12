@@ -9,7 +9,7 @@ public class CountryService {
 	
 	}
 	
-	// inection par constructeur
+	// injection par constructeur
 	public CountryService(Country country) {
 		this.country = country;
 	}

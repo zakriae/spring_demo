@@ -22,8 +22,8 @@ public class App {
 				break; // exit the program
 			}
 			
-			CountryService bean = applicationContext.getBean(beanId, CountryService.class);
-			String welcome = bean.welcome();
+			CountryService country = applicationContext.getBean(beanId, CountryService.class);
+			String welcome = country.welcome();
 			System.out.println(welcome);
 			
 		}
