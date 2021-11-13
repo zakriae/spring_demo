@@ -18,6 +18,8 @@ public class App {
 				beanId = "frenchWelcomeService";
 			} else if ("en".equals(language)) {
 				beanId = "englishWelcomeService";
+			} else if ("es".equals(language)) {
+				beanId = "spainWelcomeService";
 			} else {
 				break; // exit the program
 			}

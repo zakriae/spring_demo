@@ -4,9 +4,7 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <bean id="england"
-          class="country.service.impl.England">
-    </bean>
+
 
     <bean id="france"
           class="country.service.impl.France">
@@ -22,4 +20,17 @@
         <property name="country" ref="france"/>
     </bean>
 
+
+    <bean id="spainWelcomeService"
+          class="country.CountryService">
+        <property name="country" ref="spain"/>
+    </bean>
+
+    <bean id="spain" factory-method="getInstance"
+          class="country.service.impl.Spain">
+    </bean>
+
+    <bean id="england"
+          class="country.service.impl.England">
+    </bean>
 </beans>
