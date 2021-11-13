@@ -4,4 +4,13 @@
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+    <bean id="england"
+          class="country.service.impl.England">
+    </bean>
+
+    <bean id="englishWelcomeService"
+          class="country.CountryService">
+        <constructor-arg ref="england"/>
+    </bean>
+
 </beans>
