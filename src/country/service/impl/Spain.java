@@ -9,7 +9,7 @@ public class Spain implements Country {
 		return "Hola ! ";
 	}
 	
-
+	
 	public static Spain getInstance() {
 		return new Spain();
 	}

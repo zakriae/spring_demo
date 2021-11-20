@@ -1,15 +1,17 @@
 package country.service.impl;
 
-import country.CountryService;
+import country.FrenchCountryServiceImpl;
+import country.ICountryService;
+
 
 public class SpainServiceFactory {
 	
-	public  CountryService getInstance() {
-		return new CountryService();
+	public ICountryService getInstance() {
+		return new FrenchCountryServiceImpl();
 	}
 	
-	public  CountryService getInstanceForFrance() {
-		return new CountryService();
+	public ICountryService getInstanceForFrance() {
+		return new FrenchCountryServiceImpl();
 	}
 	
 }

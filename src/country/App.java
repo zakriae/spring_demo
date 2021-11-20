@@ -3,36 +3,25 @@ package country;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Scanner;
-
 @SuppressWarnings("all")
 public class App {
 	public static void main(String[] args) {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-				"/beans/*.xml",
-				"beans/france.xml",
-				"beans/england.xml",
-				"beans/spain.xml",
-				"beans/germany.xml");
+		//ApplicationContext applicationContext =
+		//		new AnnotationConfigApplicationContext(App.class.getPackage().getName());
+		
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans/country-context.xml");
+		
 		while (true) {
-			System.out.print("Choisir une langue : ");
-			Scanner inputFromConsole = new Scanner(System.in);
-			String language = inputFromConsole.next();
-			
-			String beanId;
+			//System.out.print("Choisir une langue : ");
+			//Scanner inputFromConsole = new Scanner(System.in);
+			String language = "fr";//inputFromConsole.next();
+			ICountryService country;
 			if ("fr".equals(language)) {
-				beanId = "frenchWelcomeService";
-			} else if ("en".equals(language)) {
-				beanId = "englishWelcomeService";
-			} else if ("es".equals(language)) {
-				beanId = "spainWelcomeService";
-			} else if ("de".equals(language)) {
-				beanId = "germanWelcomeService";
+				country = applicationContext.getBean("frenchCountryService", ICountryService.class);
 			} else {
-				break; // exit the program
+				break;
 			}
-			
-			CountryService country = applicationContext.getBean(beanId, CountryService.class);
+			country = applicationContext.getBean(ICountryService.class);
 			String welcome = country.welcome();
 			System.out.println(welcome);
 			
