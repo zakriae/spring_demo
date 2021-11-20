@@ -21,7 +21,6 @@ public class App {
 			} else {
 				break;
 			}
-			country = applicationContext.getBean(ICountryService.class);
 			String welcome = country.welcome();
 			System.out.println(welcome);
 			
