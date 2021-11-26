@@ -9,5 +9,5 @@ public abstract class AbstractCountryService implements ICountryService {
 		return getCountry().greet();
 	}
 	
-	public abstract Country getCountry();
+	public abstract Country getCountry();// c'est quoi ton pays ?
 }

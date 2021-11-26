@@ -2,6 +2,7 @@ package country.service.impl;
 
 import country.service.Country;
 
+@Pays
 public class Spain implements Country {
 	
 	@Override
@@ -9,8 +10,4 @@ public class Spain implements Country {
 		return "Hola ! ";
 	}
 	
-	
-	public static Spain getInstance() {
-		return new Spain();
-	}
 }

@@ -5,15 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("spainCountryService")
+@Service("englandCountryService")
 
-public class SpainCountryServiceImpl extends AbstractCountryService {
+public class EnglandCountryServiceImpl extends AbstractCountryService {
 	@Autowired
-	private Country spain;
+	@Qualifier("england")
+	private Country unknown;
 	
 	@Override
 	public Country getCountry() {
-		return spain;
+		return unknown;
 	}
 	
 	
