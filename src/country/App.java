@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
+// I changed this for pull request purpose
 
 @SuppressWarnings("all")
 public class App {
@@ -37,5 +38,6 @@ public class App {
 			System.out.println(welcome);
 			
 		}
+		// I changed this for pull request purpose
 	}
 }
