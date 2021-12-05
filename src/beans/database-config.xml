@@ -14,16 +14,6 @@
   http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd">
     <context:component-scan base-package="country"/>
 
-
-
-   <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:database/h2.db" />
-        <property name="username" value="sa" />
-        <property name="password" value="" />
-    </bean>-->
-
-   <!-- <tx:annotation-driven transaction-manager="transactionManager"/>-->
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:database/db-schema.sql"/>
     </jdbc:embedded-database>
