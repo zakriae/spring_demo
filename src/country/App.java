@@ -9,10 +9,10 @@ import java.util.Scanner;
 @SuppressWarnings("all")
 public class App {
 	public static void main(String[] args) {
-		ApplicationContext applicationContext =
-			new AnnotationConfigApplicationContext(App.class.getPackage().getName());
+		//ApplicationContext applicationContext =
+			//new AnnotationConfigApplicationContext(App.class.getPackage().getName());
 		
-		// ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans/country-context.xml");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans/*.xml");
 		
 		while (true) {
 			System.out.print("Choisir une langue : ");
