@@ -1,12 +1,17 @@
 package country.service.impl;
 
-import country.model.Country;
+import country.dao.DataAccess;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import country.service.ICountryService;
 
 
 public abstract class AbstractCountryService implements ICountryService {
-	
+	@Autowired
+	DataAccess dataAccess;
 	public String welcome() {
+		dataAccess.getCountryByCode();
 		return getCountry().greet();
 	}
 	
