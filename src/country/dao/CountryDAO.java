@@ -2,6 +2,6 @@ package country.dao;
 
 import country.model.Country;
 
-public interface PaysParCodeDAO {
+public interface CountryDAO {
 	Country getByCode(String code);
 }
