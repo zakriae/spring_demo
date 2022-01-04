@@ -24,4 +24,20 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		System.out.println("WELCOME : " + countryService.welcome());
 		System.out.println("Devise is :" + countryService.devise());
 	}
+
+	@Override
+	public void addNewCountry(String countryData) {
+		
+		Country country = new Country();
+		
+	    String [] arrData = countryData.split(",");
+	    
+		country.setCode(arrData[0]);
+		country.setName(arrData[1]);
+		country.setDevise(arrData[2]);
+		country.setGreetings(arrData[3]);
+		
+		countryDAO.addNewCountry(country);
+		
+	}
 }
