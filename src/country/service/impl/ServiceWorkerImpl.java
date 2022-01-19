@@ -17,7 +17,9 @@ public class ServiceWorkerImpl implements IServiceWorker {
 	
 	@Override
 	public void dealWithCountryByCode(String language) {
+
 		Country pays = countryDAO.getByCode(language);
+
 		// car c'est prototype
 		ICountryService countryService = applicationContext.getBean(ICountryService.class, pays);
 		

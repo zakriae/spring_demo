@@ -4,14 +4,15 @@ import country.service.IServiceWorker;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 @SuppressWarnings("all")
 public class App {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		ApplicationContext applicationContext =
 				new ClassPathXmlApplicationContext("beans/*.xml");
-		IServiceWorker serviceWorker = applicationContext.getBean(IServiceWorker.class);
+		IServiceWorker serviceWorker = applicationContext.getBean(IServiceWorker.class);stat
 		while (true) {
 			System.out.print("Choisir une langue : ");
 			Scanner inputFromConsole = new Scanner(System.in);
