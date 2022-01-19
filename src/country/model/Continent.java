@@ -2,18 +2,21 @@ package country.model;
 
 
 
+import javax.persistence.*;
 import java.util.List;
 
 
-
+@Entity
 public class Continent {
 
-
+    @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private String code;
 
-
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name="CONTINENT_ID")
     private List<Country> countries;
 
     public Integer getId() {

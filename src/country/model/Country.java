@@ -2,17 +2,24 @@ package country.model;
 
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
+@Entity
 public class Country implements Serializable {
 
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String name;
 	private String code;
 	private String devise;
 	private String greetings;
 
-
+	@ManyToOne
 	private Continent continent;
 	
 	public Integer getId() {
