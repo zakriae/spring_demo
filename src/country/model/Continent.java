@@ -19,6 +19,16 @@ public class Continent {
     @JoinColumn(name="CONTINENT_ID")
     private List<Country> countries;
 
+    public Continent() {
+
+    }
+    public Continent(String name, String code) {
+
+        this.name= name;
+        this.code=code;
+    }
+
+
     public Integer getId() {
         return id;
     }

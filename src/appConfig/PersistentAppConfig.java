@@ -1,8 +1,10 @@
 package appConfig;
 
+import country.model.Continent;
 import country.model.Country;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -14,6 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@ComponentScan(basePackages = "country")
 public class PersistentAppConfig {
 
     @Bean
@@ -36,7 +39,8 @@ public class PersistentAppConfig {
         localSessionFactory.setDataSource(dataSource());
         localSessionFactory.setPackagesToScan(new String[]  {"country.model" });
         localSessionFactory.setHibernateProperties(hibernateProperties());
-        localSessionFactory.setAnnotatedClasses(Country.class);
+        localSessionFactory.setAnnotatedClasses(Country.class, Continent.class);
+
         return localSessionFactory;
     }
 
