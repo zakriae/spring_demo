@@ -13,8 +13,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.Assert.assertEquals;
 git
+
 
 
 
@@ -107,6 +111,18 @@ public class AppTest {
 
     }
 
+
+    @Test
+    public void testAspectFunctionalFive() {
+
+        List<Country> List = countryDAO.getCountries("eur");
+        assertEquals(4, List.size());
+
+
+
+
+
+    }
 
 
 }

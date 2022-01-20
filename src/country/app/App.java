@@ -68,6 +68,14 @@ public class App {
 					break;
 
 				}
+				case 5: {
+					System.out.print("Enter the code of the continent: ");
+					Scanner scanner1 = new Scanner(System.in);
+					String language = scanner1.next();
+					serviceWorker.getCountries(language);
+					break;
+				}
+
 			}
 		}
 

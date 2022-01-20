@@ -2,6 +2,8 @@ package country.dao;
 
 import country.model.Country;
 
+import java.util.List;
+
 public interface CountryDAO {
 
 	Country getByCode(String code);
@@ -11,4 +13,6 @@ public interface CountryDAO {
 	void deleteCountry(Country country);
 
 	void updateCountry(Country country);
+
+	List<Country> getCountries(String code);
 }

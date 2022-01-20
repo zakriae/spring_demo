@@ -9,5 +9,7 @@ public interface IServiceWorker {
 	void getCountryData(String Code);
 	void deletCountry(String countryCode);
 	void updateCountry(String Code, String update);
+	void getCountries(String code);
+
 
 }
