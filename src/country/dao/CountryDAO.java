@@ -7,4 +7,6 @@ public interface CountryDAO {
 	Country getByCode(String code);
 
 	void addNewCountry(Country country);
+
+	void deleteCountry(Country country);
 }

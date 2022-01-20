@@ -66,4 +66,12 @@ public class ServiceWorkerImpl implements IServiceWorker {
 
 
 	}
+
+	@Override
+	public void deletCountry(String countryCode) {
+
+		Country country = countryDAO.getByCode(countryCode);
+		countryDAO.deleteCountry(country);
+
+	}
 }

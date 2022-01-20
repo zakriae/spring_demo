@@ -47,6 +47,14 @@ public class App {
 					serviceWorker.getCountryData(language);
 					break;
 				}
+				case 3: {
+
+					System.out.print("Enter the code to delete a country: ");
+					Scanner inputFromConsole = new Scanner(System.in);
+					String language = inputFromConsole.next();
+					serviceWorker.deletCountry(language);
+					break;
+				}
 
 			}
 		}
