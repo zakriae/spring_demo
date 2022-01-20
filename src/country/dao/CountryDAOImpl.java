@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,6 +60,17 @@ public class CountryDAOImpl implements CountryDAO {
 	public void updateCountry(Country country) {
 
 		sessionFactory.getCurrentSession().update(country);
+
+	}
+
+	@Override
+	public List<Country> getCountries(String code) {
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from Country where continent.code= :code");
+		query.setParameter("code",code);
+		List<Country> countries =(List<Country>) query.list();
+		return countries;
+
 
 	}
 
