@@ -5,6 +5,7 @@ import country.dao.CountryDAO;
 import country.model.Continent;
 import country.model.Country;
 
+import country.service.IServiceWorker;
 import org.junit.Test;
 
 import org.springframework.context.ApplicationContext;
@@ -14,12 +15,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import static org.junit.Assert.assertEquals;
 
 
+
+
 public class AppTest {
 
 
     ApplicationContext applicationContext =
             new AnnotationConfigApplicationContext(PersistentAppConfig.class);
     CountryDAO countryDAO = applicationContext.getBean(CountryDAO.class);
+
+    IServiceWorker serviceWorker = applicationContext.getBean(IServiceWorker.class);
 
     @Test
     public void testAspectFunctionalOne() {
@@ -59,6 +64,16 @@ public class AppTest {
         assertEquals(country.getContinent().getCode(),actualCountry.getContinent().getCode());
         assertEquals(country.getContinent().getName(),actualCountry.getContinent().getName());
 
+    }
+    @Test
+    public void testAspectFunctionalThree() {
+
+        Country country= countryDAO.getByCode("en");
+        countryDAO.deleteCountry(country);
+
+         Country expected = (Country) countryDAO.getByCode("en");
+
+        assertEquals(expected,null);
     }
 
 

@@ -32,7 +32,12 @@ public class CountryDAOImpl implements CountryDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("from Country c where c.code = :code");
 		query.setString("code",countryCode);
-		Country country= (Country)query.list().get(0);
+
+		if( query.list().isEmpty()){
+			return null;
+		}
+
+		Country country= (Country) query.list().get(0);
 
 		return country;
 
