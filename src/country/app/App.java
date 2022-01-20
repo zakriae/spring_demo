@@ -30,6 +30,10 @@ public class App {
 
 			switch (num) {
 
+				case 0: {
+					System.exit(0);
+				}
+
 				case 1: {
 
 					System.out.print("Enter the Country Data (code,name,Currency,greetings,continent_code):");
