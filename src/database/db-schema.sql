@@ -9,7 +9,7 @@ CREATE TABLE Continent
     code   VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE Country
+CREATE TABLE country
 (
     id     INT AUTO_INCREMENT PRIMARY KEY,
     name   VARCHAR(250) NOT NULL,

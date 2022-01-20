@@ -35,7 +35,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 	public void addNewCountry(String data) {
 
 		Country country = new Country();
-		Continent continent = new Continent();
+
 
 		 String [] dataArr = data.split(",");
 
@@ -49,9 +49,21 @@ public class ServiceWorkerImpl implements IServiceWorker {
 
 
 
-		continent=continentDAO.getContient(dataArr[4]);
+		Continent continent=continentDAO.getContient(dataArr[4]);
 		country.setContinent(continent);
 		countryDAO.addNewCountry(country);
+
+	}
+
+	@Override
+	public void getCountryData(String code) {
+
+		Country country = countryDAO.getByCode(code);
+
+		ICountryService countryService = applicationContext.getBean(ICountryService.class, country);
+
+		System.out.print(countryService.name()+ "," + countryService.welcome() + "," + countryService.devise() +","+ countryService.continent() +"\n" );
+
 
 	}
 }

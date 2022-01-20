@@ -19,4 +19,16 @@ public class CountryServiceImpl extends AbstractCountryService {
 	public Country getCountry() {
 		return country;
 	}
+
+	@Override
+	public String name() {
+
+		return getCountry().getName();
+	}
+
+	@Override
+	public String continent() {
+
+		return getCountry().getContinent().getName();
+	}
 }

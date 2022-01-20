@@ -15,8 +15,9 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement
 @ComponentScan(basePackages = "country")
+@EnableTransactionManagement
+
 public class PersistentAppConfig {
 
     @Bean
@@ -39,9 +40,16 @@ public class PersistentAppConfig {
         localSessionFactory.setDataSource(dataSource());
         localSessionFactory.setPackagesToScan(new String[]  {"country.model" });
         localSessionFactory.setHibernateProperties(hibernateProperties());
-        localSessionFactory.setAnnotatedClasses(Country.class, Continent.class);
+        localSessionFactory.setAnnotatedClasses(Country.class);
 
         return localSessionFactory;
+    }
+
+    @Bean
+    public PlatformTransactionManager hibernateTransactionManager() {
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(localSessionFactory().getObject());
+        return transactionManager;
     }
 
     private Properties hibernateProperties() {
@@ -50,17 +58,12 @@ public class PersistentAppConfig {
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProperties.setProperty("hibernate.show_sql","true");
-        hibernateProperties.setProperty("hibernate.hbm2ddl.import_files", "database/populate-database.sql");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.import_files","database/populate-database.sql");
         return hibernateProperties;
     }
 
 
-    @Bean
-    public PlatformTransactionManager hibernateTransactionManager() {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(localSessionFactory().getObject());
-        return transactionManager;
-    }
+
 
 
 }

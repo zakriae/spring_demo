@@ -2,6 +2,7 @@ package country.app;
 
 import country.service.IServiceWorker;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.SQLException;
@@ -11,7 +12,8 @@ import java.util.Scanner;
 public class App {
 	public static void main(String[] args) throws SQLException {
 		ApplicationContext applicationContext =
-				new ClassPathXmlApplicationContext("beans/*.xml");
+				//new ClassPathXmlApplicationContext("beans/*.xml");
+				new AnnotationConfigApplicationContext("appConfig");
 		IServiceWorker serviceWorker = applicationContext.getBean(IServiceWorker.class);
 
 		org.h2.tools.Server.createWebServer().start();
@@ -34,6 +36,15 @@ public class App {
 					Scanner inputFromConsole = new Scanner(System.in);
 					String language = inputFromConsole.next();
 					serviceWorker.addNewCountry(language);
+					break;
+				}
+
+				case 2: {
+
+					System.out.print("Enter the country code : ");
+					Scanner inputFromConsole = new Scanner(System.in);
+					String language = inputFromConsole.next();
+					serviceWorker.getCountryData(language);
 					break;
 				}
 
