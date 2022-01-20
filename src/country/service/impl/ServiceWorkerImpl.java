@@ -18,7 +18,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 	private ContinentDAO continentDAO;
 	@Autowired
 	private ApplicationContext applicationContext;
-	
+
 	@Override
 	public void dealWithCountryByCode(String language) {
 
@@ -26,7 +26,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 
 		// car c'est prototype
 		ICountryService countryService = applicationContext.getBean(ICountryService.class, pays);
-		
+
 		System.out.println("WELCOME : " + countryService.welcome());
 		System.out.println("Devise is :" + countryService.devise());
 	}
@@ -37,9 +37,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		Country country = new Country();
 
 
-		 String [] dataArr = data.split(",");
-
-
+		String[] dataArr = data.split(",");
 
 
 		country.setCode(dataArr[0]);
@@ -48,8 +46,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		country.setGreetings(dataArr[3]);
 
 
-
-		Continent continent=continentDAO.getContient(dataArr[4]);
+		Continent continent = continentDAO.getContient(dataArr[4]);
 		country.setContinent(continent);
 		countryDAO.addNewCountry(country);
 
@@ -62,7 +59,7 @@ public class ServiceWorkerImpl implements IServiceWorker {
 
 		ICountryService countryService = applicationContext.getBean(ICountryService.class, country);
 
-		System.out.print(countryService.name()+ "," + countryService.welcome() + "," + countryService.devise() +","+ countryService.continent() +"\n" );
+		System.out.print(countryService.name() + "," + countryService.welcome() + "," + countryService.devise() + "," + countryService.continent() + "\n");
 
 
 	}
@@ -74,4 +71,24 @@ public class ServiceWorkerImpl implements IServiceWorker {
 		countryDAO.deleteCountry(country);
 
 	}
+
+	@Override
+	public void updateCountry(String Code, String update) {
+
+		Country country = countryDAO.getByCode(Code);
+
+		String[] newfields = update.split(",");
+
+
+
+		country.setCode(newfields[0]);
+		country.setName(newfields[1]);
+		country.setDevise(newfields[2]);
+		country.setGreetings(newfields[3]);
+
+		Continent continent=continentDAO.getContient(newfields[4]);
+		country.setContinent(continent);
+		countryDAO.updateCountry(country);
+	}
+
 }

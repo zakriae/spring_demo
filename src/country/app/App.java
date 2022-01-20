@@ -21,7 +21,7 @@ public class App {
 		while (true) {
 
 			System.out.print("*******************************");
-			System.out.print(" \n 0 : exit \n 1 : add country \n 2 :  get country data \n 3 : delete coutry \n 4 : update country \n 5 : get countries. \n" );
+			System.out.print(" \n 0 : exit \n 1 : add country \n 2 :  get country data \n 3 : delete coutry \n 4 : update country \n 5 : get countries. \n");
 			System.out.print("******************************* \n");
 
 			System.out.print("Enter a code from 0 to 5 : ");
@@ -56,8 +56,20 @@ public class App {
 					break;
 				}
 
+				case 4: {
+					System.out.print("Enter the code to edit a country: ");
+
+					Scanner inputFromConsole = new Scanner(System.in);
+					String language = inputFromConsole.next();
+					System.out.print("Enter the new field (code,name,currency,greetings,continent_code) ");
+					Scanner inputFromConsole2 = new Scanner(System.in);
+					String update = inputFromConsole.next();
+					serviceWorker.updateCountry(language, update);
+					break;
+
+				}
 			}
 		}
+
 	}
-	
 }

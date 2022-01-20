@@ -9,4 +9,6 @@ public interface CountryDAO {
 	void addNewCountry(Country country);
 
 	void deleteCountry(Country country);
+
+	void updateCountry(Country country);
 }

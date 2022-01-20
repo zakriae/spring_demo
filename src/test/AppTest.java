@@ -6,6 +6,7 @@ import country.model.Continent;
 import country.model.Country;
 
 import country.service.IServiceWorker;
+import country.service.impl.CountryServiceImpl;
 import org.junit.Test;
 
 import org.springframework.context.ApplicationContext;
@@ -75,6 +76,37 @@ public class AppTest {
 
         assertEquals(expected,null);
     }
+
+
+    @Test
+    public void testAspectFunctionalFour() {
+
+
+
+
+        Country country = countryDAO.getByCode("fr");
+
+        country.setCode("FR");
+        country.setName("FRANCE");
+        country.setDevise("EUR");
+        country.setGreetings("BONJOUUUUR");
+        country.setContinent(new Continent("Europe","eur"));
+
+
+        countryDAO.updateCountry(country);
+
+
+        Country actualCountry = countryDAO.getByCode("FR");
+
+        assertEquals(country.getCode(),actualCountry.getCode());
+        assertEquals(country.getName(),actualCountry.getName());
+        assertEquals(country.getDevise(),actualCountry.getDevise());
+        assertEquals(country.getGreetings(),actualCountry.getGreetings());
+        assertEquals(country.getContinent().getCode(),actualCountry.getContinent().getCode());
+        assertEquals(country.getContinent().getName(),actualCountry.getContinent().getName());
+
+    }
+
 
 
 }
